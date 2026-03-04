@@ -40,7 +40,6 @@ router.post('/staff', protect, authorize('admin'), async (req, res, next) => {
   try {
     const { name, email, password, phone, role } = req.body;
 
-    console.log('Creating staff - received data:', { name, email, role, phone, hasPassword: !!password });
 
     // Validate input
     if (!name || !email || !password) {
@@ -53,7 +52,6 @@ router.post('/staff', protect, authorize('admin'), async (req, res, next) => {
 
     // Validate password strength
     if (password.length < 6) {
-      console.log('Validation failed: password too short');
       return res.status(400).json({ 
         success: false, 
         message: 'Password must be at least 6 characters long' 
@@ -63,7 +61,6 @@ router.post('/staff', protect, authorize('admin'), async (req, res, next) => {
     // Check if staff already exists
     const staffExists = await Staff.findOne({ email });
     if (staffExists) {
-      console.log('Validation failed: staff already exists');
       return res.status(400).json({ 
         success: false, 
         message: 'Staff member with this email already exists' 
@@ -73,7 +70,6 @@ router.post('/staff', protect, authorize('admin'), async (req, res, next) => {
     // Check if email exists in regular users
     const userExists = await User.findOne({ email });
     if (userExists) {
-      console.log('Validation failed: email already used by a user');
       return res.status(400).json({ 
         success: false, 
         message: 'This email is already registered' 

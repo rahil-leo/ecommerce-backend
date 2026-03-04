@@ -49,6 +49,32 @@ exports.getProducts = async (req, res, next) => {
   }
 };
 
+// @desc    Get new products (created in last 48 hours)
+// @route   GET /api/products/new/list
+// @access  Public
+exports.getNewProducts = async (req, res, next) => {
+  try {
+    // Calculate date from 48 hours ago
+    const fortyEightHoursAgo = new Date(Date.now() - 48 * 60 * 60 * 1000);
+
+    const products = await Product.find({
+      isActive: true,
+      createdAt: { $gte: fortyEightHoursAgo }
+    })
+      .populate('category', 'name slug')
+      .sort('-createdAt')
+      .limit(12);
+
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // @desc    Get single product
 // @route   GET /api/products/:id
 // @access  Public

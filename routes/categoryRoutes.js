@@ -16,6 +16,18 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// @desc    Get featured categories
+// @route   GET /api/categories/featured/list
+// @access  Public
+router.get('/featured/list', async (req, res, next) => {
+  try {
+    const categories = await Category.find({ isActive: true, isFeatured: true });
+    res.json({ success: true, data: categories });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // @desc    Get single category
 // @route   GET /api/categories/:id
 // @access  Public

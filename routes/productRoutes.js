@@ -5,11 +5,14 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
-  addReview
+  addReview,
+  getNewProducts
 } = require('../controllers/productController');
 const { protect, authorize } = require('../middleware/auth');
 
 const router = express.Router();
+
+router.get('/new/list', getNewProducts);
 
 router.route('/')
   .get(getProducts)

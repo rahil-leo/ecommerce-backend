@@ -29,31 +29,36 @@ const seedDatabase = async () => {
         name: 'Electronics',
         description: 'Electronic devices and gadgets',
         slug: 'electronics',
-        isActive: true
+        isActive: true,
+        isFeatured: true
       },
       {
         name: 'Clothing',
         description: 'Fashion and apparel',
         slug: 'clothing',
-        isActive: true
+        isActive: true,
+        isFeatured: true
       },
       {
         name: 'Books',
         description: 'Books and literature',
         slug: 'books',
-        isActive: true
+        isActive: true,
+        isFeatured: true
       },
       {
         name: 'Home & Garden',
         description: 'Home decor and garden supplies',
         slug: 'home-garden',
-        isActive: true
+        isActive: true,
+        isFeatured: false
       },
       {
         name: 'Sports',
         description: 'Sports equipment and accessories',
         slug: 'sports',
-        isActive: true
+        isActive: true,
+        isFeatured: false
       }
     ]);
     console.log('✅ Created categories');
@@ -103,7 +108,8 @@ const seedDatabase = async () => {
         numReviews: 120,
         isActive: true,
         isFeatured: true,
-        tags: ['audio', 'wireless', 'electronics']
+        tags: ['audio', 'wireless', 'electronics'],
+        createdAt: new Date()
       },
       {
         name: 'Smart Watch',
@@ -123,7 +129,8 @@ const seedDatabase = async () => {
         numReviews: 85,
         isActive: true,
         isFeatured: true,
-        tags: ['wearable', 'fitness', 'electronics']
+        tags: ['wearable', 'fitness', 'electronics'],
+        createdAt: new Date()
       },
       {
         name: 'Classic T-Shirt',
@@ -141,7 +148,8 @@ const seedDatabase = async () => {
         rating: 4.3,
         numReviews: 45,
         isActive: true,
-        tags: ['clothing', 'casual', 'cotton']
+        tags: ['clothing', 'casual', 'cotton'],
+        createdAt: new Date()
       },
       {
         name: 'JavaScript Programming Book',
@@ -160,7 +168,8 @@ const seedDatabase = async () => {
         numReviews: 200,
         isActive: true,
         isFeatured: true,
-        tags: ['books', 'programming', 'education']
+        tags: ['books', 'programming', 'education'],
+        createdAt: new Date()
       },
       {
         name: 'Laptop Stand',
@@ -178,7 +187,8 @@ const seedDatabase = async () => {
         rating: 4.6,
         numReviews: 67,
         isActive: true,
-        tags: ['office', 'ergonomic', 'accessories']
+        tags: ['office', 'ergonomic', 'accessories'],
+        createdAt: new Date()
       },
       {
         name: 'Running Shoes',
@@ -197,7 +207,8 @@ const seedDatabase = async () => {
         rating: 4.4,
         numReviews: 92,
         isActive: true,
-        tags: ['sports', 'footwear', 'running']
+        tags: ['sports', 'footwear', 'running'],
+        createdAt: new Date()
       }
     ]);
     console.log('✅ Created sample products');
